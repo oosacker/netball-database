@@ -1,21 +1,34 @@
+<form>
+  <div class="form-group">
+    <label for="team_select">Example select</label>
+    <select class="form-control" id="team_select">
+      <option>Thunderbirds</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>   
+</form>
+
 <table class="table">
     <thead> 
         <tr>
-            <th scope="col">id</th>
-            <th scope="col">name</th>
-            <th scope="col">height</th>
-            <th scope="col">hometown</th>
-            <th scope="col">team</th>
+            <th scope="col">Name</th>
+            <th scope="col">Height</th>
+            <th scope="col">Hometown</th>
+            <th scope="col">Team</th>
+            <th scope="col">Position</th>
         </tr>
     </thead>
     <tbody>
         {{#each this}}
         <tr>
-            <td scope="row">{{id}}</th>
-            <td scope="row">{{name}}</th>
+            <td scope="row">{{player_name}}</th>
             <td scope="row">{{height}}</th>
             <td scope="row">{{hometown}}</th>
-            <td scope="row">{{team}}</th>
+            <td scope="row">{{team_name}}</th>
+            <td scope="row">{{position}}</th>
         </tr>
         {{/each}}
     </tbody>

@@ -17,10 +17,14 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
-connection.query('SELECT * FROM players ORDER BY id', (err, rows, fields) => {
-    if (err) throw err;
-
-    database_data = rows;
+connection.query(
+        'SELECT players.name as player_name, players.height, players.hometown, teams.name as team_name, player_positions.position ' + 
+        'FROM ((players ' +
+        'INNER JOIN teams ON players.team=teams.id) ' +
+        'INNER JOIN player_positions ON players.id=player_positions.player_id);', 
+    (err, rows, fields) => {
+        if (err) throw err;
+        database_data = rows;
 });
 
 connection.end();
@@ -28,7 +32,8 @@ connection.end();
 const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
-    console.log(database_data);
+    // console.log(database_data);
+    console.log('received get request');
     res.render('home', database_data);
 });
 
