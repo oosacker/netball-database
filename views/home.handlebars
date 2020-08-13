@@ -1,29 +1,25 @@
-{{!-- <form method="POST" action="/">
-
-    <div class="form-group">
-        <label for="team">Team</label>
-        <input type="text" class="form-control" id="team" aria-describedby="team">
-    </div>
-
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form> --}}
-
-
-    <ul>
+<table class="table">
+    <thead> 
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">height</th>
+            <th scope="col">hometown</th>
+            <th scope="col">team</th>
+        </tr>
+    </thead>
+    <tbody>
         {{#each this}}
-            <li>{{name}}</li>
+        <tr>
+            <th scope="row">{{id}}</th>
+            <th scope="row">{{name}}</th>
+            <th scope="row">{{height}}</th>
+            <th scope="row">{{hometown}}</th>
+            <th scope="row">{{team}}</th>
+        </tr>
         {{/each}}
-    </ul>
+    </tbody>
+</table>
         
 
 

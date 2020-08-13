@@ -6,7 +6,7 @@ const app = express();
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-let player_data = [];
+let database_data = [];
 
 const mysql = require('mysql');
 const connection = mysql.createConnection({
@@ -17,12 +17,10 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
-connection.query('SELECT * FROM players WHERE team=1', (err, rows, fields) => {
+connection.query('SELECT * FROM players ORDER BY id', (err, rows, fields) => {
     if (err) throw err;
-    // console.log(rows);
 
-    player_data = rows;
-    
+    database_data = rows;
 });
 
 connection.end();
@@ -30,8 +28,8 @@ connection.end();
 const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
-    console.log(player_data);
-    res.render('home', player_data);
+    console.log(database_data);
+    res.render('home', database_data);
 });
 
 app.post('/', (req, res) => {
