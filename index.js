@@ -6,6 +6,8 @@ const app = express();
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+app.use(express.static('public'));
+
 let database_data = [];
 
 const mysql = require('mysql');
@@ -32,9 +34,13 @@ connection.end();
 const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
+    res.render('index');
+});
+
+app.get('/players', (req, res) => {
     // console.log(database_data);
-    console.log('received get request');
-    res.render('home', database_data);
+    console.log('received get request...');
+    res.render('players', database_data);
 });
 
 app.post('/', (req, res) => {
